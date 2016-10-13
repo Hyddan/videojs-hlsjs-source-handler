@@ -1,0 +1,33 @@
+{
+  "name": "videojs-hlsjs-source-handler",
+  "version": "1.0.0",
+  "description": "Hls.js Source Handler for Video.js",
+  "scripts": {
+    "compile": "grunt compile",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hyddan/videojs-hlsjs-source-handler.git"
+  },
+  "keywords": [
+    "Video.Js",
+    "Hls.Js",
+    "Source",
+    "Handler"
+  ],
+  "author": "Daniel Hedenius",
+  "license": "WTFPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Hyddan/videojs-hlsjs-source-handler/issues"
+  },
+  "homepage": "https://github.com/Hyddan/videojs-hlsjs-source-handler#readme",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "load-grunt-tasks": "^3.5.0"
+  }
+}

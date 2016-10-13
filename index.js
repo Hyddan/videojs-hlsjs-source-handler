@@ -1,0 +1,1 @@
+require('./lib/videojs-hlsjs-source-handler');
