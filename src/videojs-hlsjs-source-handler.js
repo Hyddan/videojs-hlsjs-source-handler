@@ -3,20 +3,19 @@
 
 	var HlsJsTech = function (source, tech) {
 		var _self = this,
-				_options = tech.options_,
 				_duration,
 				_video = tech.el(),
-				_hlsJs = tech.hls = new Hls(_options.hlsJs || {}),
+				_hlsJs = tech.hls = new Hls(tech.options_.hlsJs || {}),
 				_recoverDecodeErrorTime,
 				_recoverSwapAudioCodecTime,
 				_tryRecoverMediaError = function (error) {
 					var _now = Date.now();
-                    if (!_recoverDecodeErrorTime || 3000 < (now - _recoverDecodeErrorTime)) {
-                        _recoverDecodeErrorTime = now;
+                    if (!_recoverDecodeErrorTime || 3000 < (_now - _recoverDecodeErrorTime)) {
+                        _recoverDecodeErrorTime = _now;
                         _hlsJs.recoverMediaError();
                     }
-					else if (!_recoverSwapAudioCodecTime || 3000 < (now - _recoverSwapAudioCodecTime)) {
-                        _recoverSwapAudioCodecTime = now;
+					else if (!_recoverSwapAudioCodecTime || 3000 < (_now - _recoverSwapAudioCodecTime)) {
+                        _recoverSwapAudioCodecTime = _now;
                         _hlsJs.swapAudioCodec();
                         _hlsJs.recoverMediaError();
                     }
@@ -28,10 +27,6 @@
 				};
 		
 		_hlsJs.isHlsJs = true;
-		
-		_hlsJs.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
-            _duration = data.details.live ? Infinity : data.details.totalduration;
-        });
 		
 		_hlsJs.on(Hls.Events.LEVEL_LOADED, function (event, data) {
             _duration = data.details.live ? Infinity : data.details.totalduration;
