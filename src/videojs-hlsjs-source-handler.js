@@ -24,12 +24,14 @@
 						tech.error = function () { return error; };
 						tech.trigger('error');
                     }
-				};
+				},
+				_seekableStart = 0;
 		
 		_hlsJs.isHlsJs = true;
-		
+
 		_hlsJs.on(Hls.Events.LEVEL_LOADED, function (event, data) {
             _duration = data.details.live ? Infinity : data.details.totalduration;
+			_seekableStart = (data.details.fragments && data.details.fragments[0] && data.details.fragments[0].start) || _seekableStart;
         });
 		
 		_hlsJs.on(Hls.Events.ERROR, function(event, data) {
@@ -60,6 +62,9 @@
 		_self.duration = function () {
             return _duration || _video.duration || 0;
         };
+        _self.seekable = function () {
+			return videojs.createTimeRange(_seekableStart, (_video.seekable.length && _video.seekable.end(0)) || _video.duration);
+		};
 		
 		return _self;
 	};
