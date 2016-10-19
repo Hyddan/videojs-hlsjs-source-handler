@@ -1,6 +1,6 @@
 # videojs-hlsjs-source-handler
 
-> [Hls.js from Dailymotion] (https://github.com/dailymotion/hls.js) Source Handler for [Video.js] (https://github.com/videojs/video.js)
+> [Hls.js from Dailymotion](https://github.com/dailymotion/hls.js) Source Handler for [Video.js](https://github.com/videojs/video.js)
 
 ## Installation
 NPM Package: https://www.npmjs.com/package/videojs-hlsjs-source-handler
@@ -11,10 +11,10 @@ npm install videojs-hlsjs-source-handler --save
 
 ## Dependencies
 This source handler assumes you have the following dependencies already loaded:
-* [Video.Js] (https://github.com/videojs/video.js)
-* [videojs-contrib-hls] (https://github.com/videojs/videojs-contrib-hls)
-* [videojs-contrib-media-sources] (https://github.com/videojs/videojs-contrib-media-sources)
-* [Hls.Js] (https://github.com/dailymotion/hls.js)
+* [Video.Js](https://github.com/videojs/video.js)
+* [videojs-contrib-hls](https://github.com/videojs/videojs-contrib-hls)
+* [videojs-contrib-media-sources](https://github.com/videojs/videojs-contrib-media-sources)
+* [Hls.Js](https://github.com/dailymotion/hls.js)
 
 
 ## Api
@@ -35,7 +35,7 @@ videojs('video', {
 ```
 
 ## Options
-For a full list of possible hls.js options, see [the hls.js documentation] (https://github.com/dailymotion/hls.js/blob/master/API.md#fine-tuning).
+For a full list of possible hls.js options, see [the hls.js documentation](https://github.com/dailymotion/hls.js/blob/master/API.md#fine-tuning).
 
 ## Full Example
 ```html
