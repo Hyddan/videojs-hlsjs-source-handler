@@ -80,7 +80,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
- * 2016-10-14   v1.0.3   Better network error handling.
+ * 2016-10-19   v1.0.4   Updated README with npm installation and examples.
+ * 2016-10-17   v1.0.3   Better network error handling.
  * 2016-10-14   v1.0.2   Correct seekable start point for DVR controls.
  * 2016-10-14   v1.0.1   Bugfix in recovery mechanism.
  * 2016-10-13   v1.0.0   Initial version.

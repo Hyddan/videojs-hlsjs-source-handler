@@ -1,6 +1,6 @@
 {
   "name": "videojs-hlsjs-source-handler",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Hls.js Source Handler for Video.js",
   "scripts": {
     "compile": "grunt compile",
