@@ -9,7 +9,6 @@
 'use strict';
 
 module.exports = function (grunt) {
-
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
@@ -21,18 +20,30 @@ module.exports = function (grunt) {
                 'lib/**/*'
             ]
         },
-        copy: {
+        uglify: {
+            options: {
+                beautify: false,
+                compress: {
+                    sequences: false
+                },
+                mangle: true
+            },
             src: {
-                files: [{
-                    cwd: 'src/',
-                    dest: 'lib/',
-                    expand: true,
-                    src: ['**/*']
-                }]
+                files: [
+                    {
+                        cwd: 'src/',
+                        dest: 'lib/',
+                        expand: true,
+                        ext: '.min.js',
+                        src: [
+                            '**/*'
+                        ]
+                    }
+                ]
             }
         }
     });
 
-    grunt.registerTask('compile', ['clean:lib', 'copy:src']);
+    grunt.registerTask('compile', ['clean:lib', 'uglify:src']);
     grunt.registerTask('default', ['compile']);
 };
