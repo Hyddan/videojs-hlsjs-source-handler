@@ -35,6 +35,8 @@ videojs('video', {
 ```
 
 ## Options
+* shouldHandle - Disable this source handler by setting this value to `false`. Default: `true`.
+
 For a full list of possible hls.js options, see [the hls.js documentation](https://github.com/dailymotion/hls.js/blob/master/API.md#fine-tuning).
 
 ## Full Example
@@ -80,6 +82,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2016-10-24   v1.0.7   Added option to disable source handler.
  * 2016-10-19   v1.0.6   Added license.
  * 2016-10-19   v1.0.5   README formatting.
  * 2016-10-19   v1.0.4   Updated README with npm installation and examples.
