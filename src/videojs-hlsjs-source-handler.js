@@ -3,37 +3,37 @@
 
     var HlsJsTech = function (source, tech) {
         var _self = this,
-            _duration,
-            _errorCounts = {},
-            _hasFailed = false,
-            _video = tech.el(),
-            _hlsJs = tech.hls = new Hls(tech.options_.hlsJs || {}),
-            _recoverDecodeErrorTime,
-            _recoverSwapAudioCodecTime,
-            _tryRecoverMediaError = function (error) {
-                var _now = Date.now();
-                if (!_recoverDecodeErrorTime || 3000 < (_now - _recoverDecodeErrorTime)) {
-                    _recoverDecodeErrorTime = _now;
-                    _hlsJs.recoverMediaError();
-                }
-                else if (!_recoverSwapAudioCodecTime || 3000 < (_now - _recoverSwapAudioCodecTime)) {
-                    _recoverSwapAudioCodecTime = _now;
-                    _hlsJs.swapAudioCodec();
-                    _hlsJs.recoverMediaError();
-                }
-                else {
-                    // Could not recover - Bail out
-                    if (_hasFailed) {
-                        return;
+                _duration,
+                _errorCounts = {},
+                _hasFailed = false,
+                _video = tech.el(),
+                _hlsJs = tech.hls = new Hls(tech.options_.hlsJs || {}),
+                _recoverDecodeErrorTime,
+                _recoverSwapAudioCodecTime,
+                _tryRecoverMediaError = function (error) {
+                    var _now = Date.now();
+                    if (!_recoverDecodeErrorTime || 3000 < (_now - _recoverDecodeErrorTime)) {
+                        _recoverDecodeErrorTime = _now;
+                        _hlsJs.recoverMediaError();
                     }
-                    
-                    _hasFailed = true;
-                    
-                    tech.error = function () { return error; };
-                    tech.trigger('error');
-                }
-            },
-            _seekableStart = 0;
+                    else if (!_recoverSwapAudioCodecTime || 3000 < (_now - _recoverSwapAudioCodecTime)) {
+                        _recoverSwapAudioCodecTime = _now;
+                        _hlsJs.swapAudioCodec();
+                        _hlsJs.recoverMediaError();
+                    }
+                    else {
+                        // Could not recover - Bail out
+                        if (_hasFailed) {
+                            return;
+                        }
+                        
+                        _hasFailed = true;
+                        
+                        tech.error = function () { return error; };
+                        tech.trigger('error');
+                    }
+                },
+                _seekableStart = 0;
 
         _hlsJs.isHlsJs = true;
 
@@ -92,10 +92,10 @@
     };
 
     videojs.getComponent('Html5').registerSourceHandler({
-        canHandleSource: function (source) {
-            return /^(audio|video|application)\/(x-|vnd\.apple\.)?mpegurl/i.test(source.type)
-                ? 'probably'
-                : '';
+        canHandleSource: function (source, options) {
+            return /^(audio|video|application)\/(x-|vnd\.apple\.)?mpegurl/i.test(source.type) && false !== (options.hlsJs || {}).shouldHandle
+                                                                                ? 'probably'
+                                                                                : '';
         },
         handleSource: function (source, tech) {
             return new HlsJsTech(source, tech);
