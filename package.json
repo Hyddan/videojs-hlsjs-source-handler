@@ -2,6 +2,7 @@
   "name": "videojs-hlsjs-source-handler",
   "version": "1.0.8",
   "description": "Hls.js Source Handler for Video.js",
+  "main": "index.js",
   "scripts": {
     "compile": "grunt compile",
     "prepublish": "npm run compile"
