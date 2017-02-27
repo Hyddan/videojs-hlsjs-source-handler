@@ -1,6 +1,6 @@
 {
   "name": "videojs-hlsjs-source-handler",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Hls.js Source Handler for Video.js",
   "scripts": {
     "compile": "grunt compile",
@@ -22,9 +22,6 @@
     "url": "https://github.com/Hyddan/videojs-hlsjs-source-handler/issues"
   },
   "homepage": "https://github.com/Hyddan/videojs-hlsjs-source-handler#readme",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
   "devDependencies": {
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
