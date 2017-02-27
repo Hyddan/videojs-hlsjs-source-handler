@@ -82,6 +82,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2017-02-27   v1.1.0   Fixed publish configuration.
  * 2017-02-27   v1.0.8   Call startLoad() if autoStartLoad is false.
  * 2016-10-24   v1.0.7   Added option to disable source handler.
  * 2016-10-19   v1.0.6   Added license.
