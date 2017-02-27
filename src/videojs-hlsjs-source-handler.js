@@ -6,10 +6,15 @@
                 _duration,
                 _errorCounts = {},
                 _hasFailed = false,
+                _hasPlayed = false,
                 _video = tech.el(),
                 _hlsJs = tech.hls = new Hls(tech.options_.hlsJs || {}),
                 _recoverDecodeErrorTime,
                 _recoverSwapAudioCodecTime,
+                _seekableStart = 0,
+                _loadStarter = function () {
+                    _hlsJs.startLoad() || _video.removeEventListener('play', _loadStarter);
+                },
                 _tryRecoverMediaError = function (error) {
                     var _now = Date.now();
                     if (!_recoverDecodeErrorTime || 3000 < (_now - _recoverDecodeErrorTime)) {
@@ -32,10 +37,11 @@
                         tech.error = function () { return error; };
                         tech.trigger('error');
                     }
-                },
-                _seekableStart = 0;
+                };
 
         _hlsJs.isHlsJs = true;
+
+        false === _hlsJs.config.autoStartLoad && _video.addEventListener('play', _loadStarter);
 
         _hlsJs.on(Hls.Events.LEVEL_LOADED, function (event, data) {
             _duration = data.details.live ? Infinity : data.details.totalduration;
