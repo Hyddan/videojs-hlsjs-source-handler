@@ -97,7 +97,7 @@
         return _self;
     };
 
-    videojs.getComponent('Html5').registerSourceHandler({
+    ((videojs.getTech && videojs.getTech('Html5')) || (videojs.getComponent && videojs.getComponent('Html5'))).registerSourceHandler({
         canHandleSource: function (source, options) {
             return /^(audio|video|application)\/(x-|vnd\.apple\.)?mpegurl/i.test(source.type) && false !== (options.hlsJs || {}).shouldHandle
                                                                                 ? 'probably'
