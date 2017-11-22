@@ -82,6 +82,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2017-11-22   v1.2.0   Added support for Video.Js 6 (Video.Js 5 still supported). && Fixed bug where Hls.js might not start loading if autoStartLoad is false and preroll ad timed out.
  * 2017-02-27   v1.1.0   Fixed publish configuration.
  * 2017-02-27   v1.0.8   Call startLoad() if autoStartLoad is false.
  * 2016-10-24   v1.0.7   Added option to disable source handler.
