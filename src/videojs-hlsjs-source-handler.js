@@ -13,7 +13,11 @@
                 _recoverSwapAudioCodecTime,
                 _seekableStart = 0,
                 _loadStarter = function () {
-                    _hlsJs.startLoad() || _video.removeEventListener('play', _loadStarter);
+                    if (!_hasPlayed || (_hasPlayed && 0 === _self.duration() && false === _hlsJs.config.autoStartLoad)) {
+                        _hlsJs.startLoad();
+                    }
+
+                    _hasPlayed = true;
                 },
                 _tryRecoverMediaError = function (error) {
                     var _now = Date.now();
@@ -85,6 +89,8 @@
 
         // Video.Js interface
         _self.dispose = function () {
+            _video.removeEventListener('play', _loadStarter);
+
             _hlsJs.destroy();
         };
         _self.duration = function () {
