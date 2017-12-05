@@ -6,6 +6,7 @@
                 _duration,
                 _errorCounts = {},
                 _hasFailed = false,
+                _hasLoadedManifest = false,
                 _hasPlayed = false,
                 _video = tech.el(),
                 _hlsJs = tech.hls = new Hls(tech.options_.hlsJs || {}),
@@ -13,7 +14,7 @@
                 _recoverSwapAudioCodecTime,
                 _seekableStart = 0,
                 _loadStarter = function () {
-                    if (!_hasPlayed || (_hasPlayed && 0 === _self.duration() && false === _hlsJs.config.autoStartLoad)) {
+                    if (_hasLoadedManifest && (!_hasPlayed || (_hasPlayed && 0 === _self.duration() && false === _hlsJs.config.autoStartLoad))) {
                         _hlsJs.startLoad();
                     }
 
@@ -46,6 +47,12 @@
         _hlsJs.isHlsJs = true;
 
         false === _hlsJs.config.autoStartLoad && _video.addEventListener('play', _loadStarter);
+
+        _hlsJs.on(Hls.Events.MANIFEST_LOADED, function () {
+            _hasLoadedManifest = true;
+
+            _hasPlayed && false === _hlsJs.config.autoStartLoad && _loadStarter();
+        });
 
         _hlsJs.on(Hls.Events.LEVEL_LOADED, function (event, data) {
             _duration = data.details.live ? Infinity : data.details.totalduration;
