@@ -78,6 +78,13 @@
                             return;
                         }
 
+                        // https://github.com/video-dev/hls.js/issues/491#issuecomment-231159131
+                        if ([Hls.ErrorDetails.MANIFEST_LOAD_ERROR, Hls.ErrorDetails.MANIFEST_LOAD_TIMEOUT, Hls.ErrorDetails.MANIFEST_PARSING_ERROR].some(function (details) { return details === data.details; })) {
+                            _hlsJs.loadSource(source.src);
+
+                            return;
+                        }
+
                         _hlsJs.startLoad();
                         break;
                     case Hls.ErrorTypes.MEDIA_ERROR:
