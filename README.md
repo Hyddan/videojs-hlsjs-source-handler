@@ -82,6 +82,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2018-10-18   v1.4.0   Improved network error recovery when failing to load the manifest.
  * 2017-12-05   v1.3.0   Fixed bug where Hls.js might not start loading if autoStartLoad is false and _loadStarter is triggered before the lop level manifest is loaded.
  * 2017-11-22   v1.2.0   Added support for Video.Js 6 (Video.Js 5 still supported). && Fixed bug where Hls.js might not start loading if autoStartLoad is false and preroll ad timed out.
  * 2017-02-27   v1.1.0   Fixed publish configuration.
